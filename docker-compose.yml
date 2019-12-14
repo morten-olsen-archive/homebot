@@ -1,0 +1,26 @@
+version: '3.0'
+services:
+  rasa:
+    image: rasa/rasa:latest-full
+    ports:
+      - 127.0.0.1:5005:5005
+    volumes:
+      - ./:/app
+    depends_on:
+      - action_server
+      - redis
+      # - rabbitmq
+    command:
+      - run
+  action_server:
+    image: rasa/rasa-sdk:latest
+    volumes:
+      - ./actions:/app/actions
+  redis:
+    image: redis:latest
+  # rabbitmq:
+  #   image: rabbitmq
+  # speech_to_text:
+  #   image: codait/max-speech-to-text-converter
+  # text_to_speech
+  #   image: parente/espeakbox
