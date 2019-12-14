@@ -16,6 +16,18 @@ services:
     image: rasa/rasa-sdk:latest
     volumes:
       - ./actions:/app/actions
+  jupyter:
+    build:
+      context: ./docker
+      dockerfile: jupyter
+    volumes:
+      - ./:/app
+    ports:
+      - 127.0.0.1:8888:8888
+    depends_on:
+      - action_server
+      - redis
+      # - rabbitmq
   redis:
     image: redis:latest
   # rabbitmq:

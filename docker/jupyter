@@ -1,0 +1,4 @@
+FROM rasa/rasa-sdk:latest
+
+RUN pip install jupyterlab nest_asyncio rasa
+ENTRYPOINT [ "jupyter", "lab", "--ip=0.0.0.0", "--allow-root" ]
