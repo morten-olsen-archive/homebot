@@ -1,1 +1,1 @@
-jupyter notebook
+docker-compose up jupyter
